@@ -6,25 +6,37 @@ We sometimes find ourselves in situation when server is nearing to the end of gr
 
 ***Note: You will have to restart following services for the reset to come into effect:***
 
-- Remote Desktop Configuration Properties
 - Remote Desktop Services
+- Remote Desktop Configuration Properties (optional)
 
 As soon as these services are restarted all the active sessions will be disconnected (**not logged off**). Wait for a short time and reconnect again.
 
 ## How to use
 
-- Interactive reset. Remaining grace period value will be displayed before reset confirmation.
+- Interactive reset. Remaining grace period value will be displayed before reset confirmation. Terminal Service will not be restarted.
 
 ```powershell
-.\clean-rds-grace-period.ps1
+.\reset-rds-grace-period.ps1
 ```
 
-- Reset grace period forcefully w/o confirmation.
+- Interactive reset. Remaining grace period value will be displayed before reset confirmation. Terminal Service will be restarted.
 
 ```powershell
-.\clean-rds-grace-period.ps1 -Force
+.\reset-rds-grace-period.ps1 -RestartTS
+```
+
+- Reset grace period forcefully w/o confirmation. Terminal Service will not be restarted.
+
+```powershell
+.\reset-rds-grace-period.ps1 -Force
+```
+
+- Reset grace period forcefully w/o confirmation. Terminal Service will be restarted.
+
+```powershell
+.\reset-rds-grace-period.ps1 -Force -RestartTS
 ```
 
 ## Credits
 
-Based on work of [Prakash82x](https://github.com/Prakash82x/PowerShell/blob/master/TerminalService/Reset-TSGracePeriod.ps1)
+Inspired by [Prakash82x](https://github.com/Prakash82x/PowerShell/blob/master/TerminalService/Reset-TSGracePeriod.ps1) work.
